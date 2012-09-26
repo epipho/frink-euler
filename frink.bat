@@ -7,8 +7,7 @@ REM Replace this with the full path to your java executable
 SET JAVA=java
 
 REM Replace this with the path to your frink.jar file
-SET FRINKJAR=frink.jar
-
+SET FRINKJAR=%~dp0\frink.jar
 REM ---------------Configurable parameters end------------------
 
 REM If you only have the Java Virtual Machine installed, you may not have the
