@@ -1,0 +1,10 @@
+//2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
+//What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+factors = new dict
+for d = 2 to 20
+	for f = factor[d]
+		factors@(f@0) = factors.containsKey[f@0] ? max[factors@(f@0), f@1] : f@1
+
+println[product[map[{|x| x@0^x@1}, factors]]]
+		
