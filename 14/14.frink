@@ -1,0 +1,53 @@
+//The following iterative sequence is defined for the set of positive integers:
+
+//n  n/2 (n is even)
+//n  3n + 1 (n is odd)
+
+//Using the rule above and starting with 13, we generate the following sequence:
+
+//13  40  20  10  5  16  8  4  2  1
+//It can be seen that this sequence (starting at 13 and finishing at 1) contains 10 terms. Although it has not been proved yet (Collatz Problem), it is thought that all starting numbers finish at 1.
+
+//Which starting number, under one million, produces the longest chain?
+
+//NOTE: Once the chain starts the terms are allowed to go above one million.
+
+//keep track of chain lengths and use them to shortcut calculations
+
+used = new dict
+max_val = 1
+max_chain = 1
+
+for t = 1 to 1_000_000
+{
+	chain_len = chainLen[t, used]
+	if chain_len > max_chain
+	{
+		max_val = t
+		max_chain = chain_len
+	}
+}
+max_val
+	
+chainLen[x, used] :=
+{
+	s = 1
+	mx = x
+	while mx != 1
+	{
+		n = used@mx
+		if n != undef
+		{
+			s = s + n - 1
+			break
+		}
+			
+		if mx mod 2 == 0
+			mx = mx / 2
+		else
+			mx = 3*mx+1
+		s = s + 1
+	}
+	used@x = s
+	s
+}
