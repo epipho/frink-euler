@@ -1,0 +1,4 @@
+//Work out the first ten digits of the sum of the following one-hundred 50-digit numbers.
+// (vals.txt)
+
+left["" + sum[map[{|line| parseInt[line]}, lines["file:vals.txt"]]], 10]
