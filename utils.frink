@@ -1,0 +1,3 @@
+//Sum of all digits in a number
+digitSum[x] :=
+	sum[map[{|n| parseInt[n]}, "$x" =~ %r/(\d)/g]]
