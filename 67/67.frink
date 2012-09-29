@@ -1,0 +1,36 @@
+//By starting at the top of the triangle below and moving to adjacent numbers on the row below, the maximum total from top to bottom is 23.
+
+//3
+//7 4
+//2 4 6
+//8 5 9 3
+
+//That is, 3 + 7 + 4 + 9 = 23.
+
+//Find the maximum total from top to bottom of the triangle below:
+//Same as problem 18
+cur = new array
+for f = lines["file:tri.txt"]
+{
+	vals = map[{|n| parseInt[n]}, split[%r/\s+/, f]]
+	if length[vals] == 1
+		cur = vals
+	else
+	{
+		//handle ends
+		vals@0 = vals@0 + cur@0
+		vals@(length[vals]-1) = vals@(length[vals]-1) + cur@(length[cur]-1)
+		//handle center by taking the largest of the left and right vals
+		for i = 1 to length[vals]-2
+			vals@i = vals@i + max[cur@(i-1), cur@i]
+		cur = vals
+	}	
+}
+
+//find max
+m = 0
+for n = cur
+	m = max[m, n]
+m
+
+	
