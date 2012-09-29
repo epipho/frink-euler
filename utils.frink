@@ -1,3 +1,29 @@
 //Sum of all digits in a number
 digitSum[x] :=
+{
 	sum[map[{|n| parseInt[n]}, "$x" =~ %r/(\d)/g]]
+}
+
+//zip up two lists into 1
+zip[a,b] :=
+{
+	aa = toArray[a]
+	ab = toArray[b]
+	ret = new array[]
+	for i = 0 to min[[length[aa],length[ab]]]-1
+      ret.push[[aa@i,ab@i]]
+   ret
+}
+
+//return a list of array idx and array values
+pairs[x] :=
+{
+	count = 0
+	ret = new array
+	for a = x
+	{
+		ret.push[[count, a]]
+		count = count + 1
+	}
+	ret
+}
