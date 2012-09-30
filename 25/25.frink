@@ -1,0 +1,16 @@
+//The 12th term, F12, is the first term to contain three digits.
+//What is the first term in the Fibonacci sequence to contain 1000 digits?
+
+p = 1	//prev
+c = 1	//current
+n = 2	//term count
+
+while length["$c"] < 1000
+{
+	swap = c
+	c = p + c
+	p = swap
+	
+	n = n + 1
+}
+n
