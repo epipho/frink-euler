@@ -1,0 +1,56 @@
+//A unit fraction contains 1 in the numerator. The decimal representation of the unit fractions with denominators 2 to 10 are given:
+
+//1/2	= 	0.5
+//1/3	= 	0.(3)
+//1/4	= 	0.25
+//1/5	= 	0.2
+//1/6	= 	0.1(6)
+//1/7	= 	0.(142857)
+//1/8	= 	0.125
+//1/9	= 	0.(1)
+//1/10	= 	0.1
+//Where 0.1(6) means 0.166666..., and has a 1-digit recurring cycle. It can be seen that 1/7 has a 6-digit recurring cycle.
+
+//Find the value of d  1000 for which 1/d contains the longest recurring cycle in its decimal fraction part.
+
+max_period = 0
+max_d = 0
+
+for d = 1 to 999
+{
+	p = repeatingPeriod[d]
+	if p > max_period
+	{
+		max_period = p
+		max_d = d
+	}
+}
+max_d
+
+
+repeatingPeriod[d] :=
+{
+	r = 1
+	c = 0		//count
+	
+	vals = new dict
+	
+	//long division!
+	do
+	{
+		//bring down zeros
+		while r < d
+			r = r * 10
+		
+		//have we dealt with the numerator?
+		if vals.containsKey[r]
+			return c - vals@r
+		
+		vals@r = c
+		
+		r = r mod d
+		c = c + 1
+	
+	} while r != 0
+	0
+}
